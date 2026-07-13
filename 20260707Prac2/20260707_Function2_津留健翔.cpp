@@ -27,7 +27,12 @@ void Game()
 	cout << endl;
 
 	//入力
-	InputCheck();
+	cout << "CPUの数字の予測を入力してください\n";
+	for (int i = 0; i < Sys::HAS_CARD; i++)
+	{
+		cout << i + 1 << ": ";
+		playerSelect[i] = InputCheck(Sys::CARD_MIN, Sys::CARD_MAX);
+	}
 }
 
 void ShuffleNum(int min, int max,int has,int hand[])
@@ -58,6 +63,20 @@ int InputCheck(int min, int max)
 {
 	int num;
 
+	//入力
+	while (true)
+	{
+		cout << "→ ";
+		cin >> num;
+		if (num < min || num > max)
+		{
+			cout << "範囲外です。再度入力してください。\n";
+		}
+		else
+		{
+			break;
+		}
+	}
 
 	return num;
 }
